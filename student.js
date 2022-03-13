@@ -1,4 +1,4 @@
-// Student Class: Represents a Student
+
 class Student {
   constructor(name, surname, id,email,address) {
     this.name = name;
@@ -48,8 +48,8 @@ class UI {
     const form = document.querySelector('#Student-Registration-form');
     container.insertBefore(div, form);
 
-    // Vanish in 3 seconds
-    setTimeout(() => document.querySelector('.alert').remove(), 3000);
+
+    setTimeout(() => document.querySelector('.alert').remove(), 4000);
   }
 
   static clearFields() {
@@ -61,7 +61,7 @@ class UI {
   }
 }
 
-// Store Class: Handles Storage
+
 class Store {
   static getStudent() {
     let students;
@@ -93,38 +93,37 @@ class Store {
   }
 }
 
-// Event: Display Student
+
 document.addEventListener('DOMContentLoaded', UI.displayStudent);
 
-// Event: Add a Student
+
 document.querySelector('#Student-Registration-form').addEventListener('submit', (e) => {
-  // Prevent actual submit
+ 
   e.preventDefault();
 
-  // Get form values
+ 
   const name = document.querySelector('#name').value;
   const surname = document.querySelector('#surname').value;
   const id = document.querySelector('#id').value;
   const contact = document.querySelector('#email').value;
   const address = document.querySelector('#address').value;
 
-  // Validate
+  
   if(name === '' || surname === '' || id === '' || email === '' || address === '') {
     UI.showAlert('Please fill in all fields', 'danger');
   } else {
-    // Instatiate student
+  
     const student = new Student(name, surname, id, email, address);
 
-    // Add Student to UI
     UI.addStudentToList(student);
 
-    // Add student to store
+    
     Store.addStudent(student);
 
-    // Show success message
+  
     UI.showAlert('Student Added', 'success');
 
-    // Clear fields
+ 
     UI.clearFields();
   }
 });
